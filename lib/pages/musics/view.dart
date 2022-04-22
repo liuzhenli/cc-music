@@ -7,12 +7,10 @@ class MusicsPage extends StatelessWidget {
   final logic = Get.put(MusicsLogic());
   final state = Get.find<MusicsLogic>().state;
 
+   MusicsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container();
   }
-
-  void viewAppear() {}
-
-  void viewDisAppear() {}
 }

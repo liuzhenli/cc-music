@@ -39,9 +39,10 @@ class MainPage extends StatelessWidget {
     return CupertinoTabBar(
         items: [
           buildBottomNavigationBarItem("搜索", IconName.search, IconName.search),
-          buildBottomNavigationBarItem("搜索", IconName.setting, IconName.setting),
           buildBottomNavigationBarItem("搜索", IconName.search, IconName.search),
-          buildBottomNavigationBarItem("搜索", IconName.search, IconName.search),
+          buildBottomNavigationBarItem("搜索", IconName.like, IconName.like),
+          buildBottomNavigationBarItem(
+              "设置", IconName.setting, IconName.setting),
         ],
         backgroundColor: Colors.white,
         currentIndex: state.tabIndex,

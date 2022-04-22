@@ -11,6 +11,4 @@ class RankPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
-
-  void onResume() {}
 }
