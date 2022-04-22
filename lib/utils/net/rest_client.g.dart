@@ -28,7 +28,7 @@ class _RestClient implements RestClient {
         _setStreamType<KwTempSearchEntity>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options,
-                    '/api/www/search/searchKey?key=%E6%88%91&_=1650266933011',
+                    '/api/www/search/searchKey',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = KwTempSearchEntity.fromJson(_result.data!);

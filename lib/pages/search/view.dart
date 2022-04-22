@@ -13,7 +13,6 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("哈哈")),
       body: CustomScrollView(
         slivers: <Widget>[
           _buildSliverAppBar(),
