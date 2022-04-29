@@ -12,4 +12,7 @@ abstract class RestClient {
   //增加新的请求 需要执行 flutter pub run build_runner build
   @GET(Address.search)
   Future<KwTempSearchEntity> search(@Queries() Map<String, dynamic> body);
+
+  @GET(Address.empty)
+  Future<KwTempSearchEntity> request();
 }

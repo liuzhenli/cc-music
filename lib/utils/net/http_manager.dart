@@ -19,8 +19,8 @@ class HttpManager {
   Dio? _dio;
   late RestClient client;
 
-  static const CODE_SUCCESS = 200;
-  static const CODE_TIME_OUT = -1;
+  static const codeSuccess = 200;
+  static const codeTimeOut = -1;
 
   factory HttpManager() => _instance;
 
