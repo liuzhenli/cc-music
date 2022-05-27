@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:music/pages/main/view.dart';
 
-void main() {
+main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 

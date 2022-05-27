@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:music/utils/sp_const.dart';
 import 'package:music/utils/sp_util.dart';
@@ -20,12 +21,16 @@ class LogsInterceptors extends InterceptorsWrapper {
     GetStorage box = GetStorage();
     var token = box.read("token");
     if (token != null) {
-      options.headers["Authorization"] = "Bearer ${token}";
+      options.headers["Authorization"] = "Bearer $token";
     }
     options.headers["user-agent"] =
         "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36";
 
-    options.headers["kw_token"] = SpUti.read("kw_token");
+    options.headers["Cookie"] = "kw_token=${SpUti.read(SpConstants.kwToken)}";
+    options.headers["csrf"] = SpUti.read(SpConstants.kwToken);
+    options.headers["accept"] = "application/json";
+    options.headers["referer"] = "http://www.kuwo.cn/";
+
 
     if (options.headers.isNotEmpty) {
       print("headers:" + options.headers.toString());
@@ -37,10 +42,8 @@ class LogsInterceptors extends InterceptorsWrapper {
 
   @override
   onResponse(Response response, ResponseInterceptorHandler handler) async {
-    if (response != null) {
-      var responseStr = response.toString();
-      print("响应: " + responseStr);
-    }
+    var responseStr = response.toString();
+    debugPrint("响应: " + responseStr);
     handler.next(response);
   }
 
