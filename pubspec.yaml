@@ -45,6 +45,8 @@ dependencies:
   retrofit: any
   webview_flutter: ^3.0.2
   url_launcher: ^6.1.0
+  flutter_bloc: ^8.0.1 # 状态管理
+  responsive_builder: ^0.4.2
 
 dev_dependencies:
   flutter_test:

@@ -4,23 +4,33 @@ import 'package:music/generated/json/kw_temp_search_entity.g.dart';
 
 @JsonSerializable()
 class KwTempSearchEntity {
+  int? code;
+  int? curTime;
+  String? data;
+  String? msg;
+  String? profileId;
+  String? reqId;
+  String? tId;
 
-	int? code;
-	int? curTime;
-	List<String>? data;
-	String? msg;
-	String? profileId;
-	String? reqId;
-	String? tId;
-  
   KwTempSearchEntity();
 
-  factory KwTempSearchEntity.fromJson(Map<String, dynamic> json) => $KwTempSearchEntityFromJson(json);
+  factory KwTempSearchEntity.fromJson(Map<String, dynamic> json) =>
+      $KwTempSearchEntityFromJson(json);
 
   Map<String, dynamic> toJson() => $KwTempSearchEntityToJson(this);
 
   @override
   String toString() {
     return jsonEncode(this);
+  }
+
+  List<String> getData() {
+    if (data == null) {
+      return [];
+    } else {
+      RegExp exp = RegExp("RELWORD=(.+)");
+      if (exp.hasMatch(data!)) {}
+      return [];
+    }
   }
 }

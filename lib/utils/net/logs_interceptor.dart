@@ -9,14 +9,14 @@ import 'app_exception.dart';
 class LogsInterceptors extends InterceptorsWrapper {
   @override
   onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    print("请求baseUrl：${options.baseUrl}${options.path}");
+    debugPrint("请求Url：${options.baseUrl}${options.path}");
     if (options.method == "GET") {
-      print('请求参数: ' + options.queryParameters.toString());
+      debugPrint('请求参数: ' + options.queryParameters.toString());
     }
     if (options.method == "POST") {
-      print('请求参数: ' + options.data.toString());
+      debugPrint('请求参数: ' + options.data.toString());
     }
-    print('请求头: ' + options.headers.toString());
+    debugPrint('请求头: ' + options.headers.toString());
 
     GetStorage box = GetStorage();
     var token = box.read("token");
@@ -27,9 +27,6 @@ class LogsInterceptors extends InterceptorsWrapper {
         "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36";
 
     options.headers["Cookie"] = "kw_token=${SpUti.read(SpConstants.kwToken)}";
-    options.headers["csrf"] = SpUti.read(SpConstants.kwToken);
-    options.headers["accept"] = "application/json";
-    options.headers["referer"] = "http://www.kuwo.cn/";
 
 
     if (options.headers.isNotEmpty) {

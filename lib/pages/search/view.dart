@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:music/pages/search/widget/app_search_bar.dart';
 
@@ -12,13 +13,16 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          _buildSliverAppBar(),
-        ],
-      ),
-    );
+    return GetBuilder<SearchLogic>(builder: (logic) {
+      return Scaffold(
+        body: CustomScrollView(
+          slivers: <Widget>[
+            _buildSliverAppBar(),
+            _buildSliverList(logic.state.kwTips.getData()),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _buildSliverAppBar() {
@@ -32,4 +36,17 @@ class SearchPage extends StatelessWidget {
       ],
     );
   }
+
+  Widget _buildSliverList(List<String>? models) => SliverList(
+        delegate: SliverChildBuilderDelegate(
+            (_, int index) => Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 10, top: 2, left: 10, right: 10),
+                child: InkWell(
+                    onTap: () => _toDetailPage(models![index]),
+                    child: Text(models![index]))),
+            childCount: models?.length),
+      );
+
+  void _toDetailPage(String model) {}
 }

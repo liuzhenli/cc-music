@@ -25,7 +25,7 @@ class HttpManager {
   factory HttpManager() => _instance;
 
   ///通用全局单例，第一次使用时初始化
-  HttpManager._internal({String? baseUrl}) {
+  HttpManager._internal() {
     if (null == _dio) {
       _dio = Dio(BaseOptions(baseUrl: Address.baseUrl, connectTimeout: 15000));
       (_dio?.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -61,7 +61,7 @@ class HttpManager {
     }
   }
 
-  static HttpManager getInstance({String? baseUrl}) {
+  static HttpManager getInstance({String? baseUrl, RequestOptions? options}) {
     if (baseUrl == null) {
       return _instance._normal();
     } else {
@@ -70,18 +70,24 @@ class HttpManager {
   }
 
   ///用于指定特定域名，比如cdn和kline首次的http请求
-  HttpManager _baseUrl(String baseUrl) {
+  HttpManager _baseUrl(String baseUrl, {RequestOptions? options}) {
     if (_dio != null) {
       _dio?.options.baseUrl = baseUrl;
+      if (options != null) {
+        _dio?.options.headers = options.headers;
+      }
     }
     return this;
   }
 
   ///一般请求，默认域名
-  HttpManager _normal() {
+  HttpManager _normal({RequestOptions? options}) {
     if (_dio != null) {
       if (_dio?.options.baseUrl != Address.baseUrl) {
         _dio?.options.baseUrl = Address.baseUrl;
+      }
+      if (options != null) {
+        _dio?.options.headers = options.headers;
       }
     }
     return this;

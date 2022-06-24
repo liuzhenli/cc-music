@@ -1,5 +1,5 @@
+import '../../utils/api/kw_temp_search_entity.dart';
+
 class SearchState {
-  SearchState() {
-    ///Initialize variables
-  }
+  late KwTempSearchEntity kwTips = KwTempSearchEntity();
 }
