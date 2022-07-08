@@ -63,9 +63,9 @@ class HttpManager {
 
   static HttpManager getInstance({String? baseUrl, RequestOptions? options}) {
     if (baseUrl == null) {
-      return _instance._normal();
+      return _instance._normal(options: options);
     } else {
-      return _instance._baseUrl(baseUrl);
+      return _instance._baseUrl(baseUrl,options: options);
     }
   }
 

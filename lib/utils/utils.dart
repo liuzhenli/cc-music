@@ -17,3 +17,14 @@ String getCountDownString(int time){
   }
   return result;
 }
+
+
+String formatTime(int time) {
+  var m = time / 60;
+  var s = time % 60;
+  if (m == 0 && s == 0) {
+    return "--/--";
+  } else {
+    return "${(m < 10 ? "0$m" : m)}:${(s < 10 ? "0$s" : s)}";
+  }
+}

@@ -40,7 +40,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
                     ),
                     hintText: "search for something ...",
                     hintStyle: TextStyle(fontSize: 14)),
-                onChanged: logic.search,
+                onChanged: logic.tempSearch,
                 onSubmitted: (str) {
                   //提交后,收起键盘
                   FocusScope.of(context).requestFocus(FocusNode());
