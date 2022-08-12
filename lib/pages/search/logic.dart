@@ -34,7 +34,7 @@ class SearchLogic extends GetxController {
   Future<void> searchMusic(String key, int page, int limit) async {
     var result =
         await HttpManager.getInstance().client.searchMusic(key, page, limit);
-    for (KwMusicInfo music in result.abslist!) {
+    for (KwMusicInfo music in result.abslist) {
       MusicInfo musicInfo = MusicInfo();
       musicInfo.name = music.songName ?? "";
       musicInfo.singer = music.artist ?? "";

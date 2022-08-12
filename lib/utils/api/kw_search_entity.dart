@@ -1,49 +1,50 @@
-import 'package:music/generated/json/base/json_field.dart';
-import 'package:music/generated/json/kw_search_entity.g.dart';
-import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'kw_search_entity.g.dart';
+
 
 @JsonSerializable()
-class KwSearchEntity {
+class KwSearchEntity extends Object {
 
-	List<KwMusicInfo>? abslist;
+	@JsonKey(name: 'abslist')
+	List<KwMusicInfo> abslist;
 
-  KwSearchEntity();
+	KwSearchEntity(this.abslist,);
 
-  factory KwSearchEntity.fromJson(Map<String, dynamic> json) => $KwSearchEntityFromJson(json);
+	factory KwSearchEntity.fromJson(Map<String, dynamic> srcJson) => _$KwSearchEntityFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => $KwSearchEntityToJson(this);
+	Map<String, dynamic> toJson() => _$KwSearchEntityToJson(this);
 
-  @override
-  String toString() {
-    return jsonEncode(this);
-  }
 }
 
+
 @JsonSerializable()
-class KwMusicInfo {
-	@JSONField(name: "SONGNAME")
-	String? songName;
-	@JSONField(name: "ARTIST")
-	String? artist;
-	@JSONField(name: "MUSICRID")
-	String? musicRID;
-	@JSONField(name: "ALBUMID")
-	String? albumId;
-	@JSONField(name: "DURATION")
-	String? duration;
-	@JSONField(name: "ALBUM")
-	String? album;
-	@JSONField(name: "MINFO")
+class KwMusicInfo extends Object {
+
+	@JsonKey(name: 'MINFO')
 	String? mInfo;
 
-  KwMusicInfo();
+	@JsonKey(name: 'SONGNAME')
+	String? songName;
 
-  factory KwMusicInfo.fromJson(Map<String, dynamic> json) => $KwMusicInfoFromJson(json);
+	@JsonKey(name: 'ARTIST')
+	String? artist;
 
-  Map<String, dynamic> toJson() => $KwMusicInfoToJson(this);
+	@JsonKey(name: 'MUSICRID')
+	String? musicRID;
 
-  @override
-  String toString() {
-    return jsonEncode(this);
-  }
+	@JsonKey(name: 'ALBUMID')
+	String? albumId;
+
+	@JsonKey(name: 'DURATION')
+	String? duration;
+
+	@JsonKey(name: 'ALBUM')
+	String? album;
+
+	KwMusicInfo(this.mInfo,this.songName,this.artist,this.musicRID,this.albumId,this.duration,this.album,);
+
+	factory KwMusicInfo.fromJson(Map<String, dynamic> srcJson) => _$KwMusicInfoFromJson(srcJson);
+
+	Map<String, dynamic> toJson() => _$KwMusicInfoToJson(this);
 }
