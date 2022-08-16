@@ -80,7 +80,7 @@ class SearchPage extends StatelessWidget {
   void _toDetailPage(MusicInfo musicInfo) {}
 
   Widget _showDropMenu(SearchLogic logic, BuildContext context) {
-    List<String> musics = logic.state.kwTips!.getData();
+    List<String>? musics = logic.state.kwTips?.getData();
     return SliverToBoxAdapter(
       child: Visibility(
         visible: !logic.state.showResultView,
@@ -89,15 +89,15 @@ class SearchPage extends StatelessWidget {
           duration: const Duration(milliseconds: 300),
           child: Scrollbar(
               child: ListView.builder(
-                  itemCount: musics.length,
+                  itemCount: musics?.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        _doSearch(musics[index]);
+                        _doSearch(musics![index]);
                       },
                       child: Container(
-                        child: Text(musics[index]),
+                        child: Text(musics![index]),
                       ),
                     );
                   })),

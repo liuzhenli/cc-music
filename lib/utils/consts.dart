@@ -4,4 +4,6 @@ class Constants {
 
   ///隐私政策
   static const String urlPrivacyAgreement = "";
+
+  static const List<String> path = ["http://search.kuwo.cn/r.s"];
 }
