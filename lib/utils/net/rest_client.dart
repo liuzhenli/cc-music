@@ -1,9 +1,9 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
+import 'package:music/utils/api/audio.dart';
 import 'package:music/utils/api/kw_search_entity.dart';
 import 'package:music/utils/api/kw_temp_search_entity.dart';
 import 'package:retrofit/http.dart';
+import '../api/kw_lyric.dart';
 import 'address.dart';
 
 part 'rest_client.g.dart';
@@ -23,4 +23,11 @@ abstract class RestClient {
   @GET(Address.searchMusic)
   Future<KwSearchEntity> searchMusic(@Path("key") String key,
       @Path("page") int page, @Path("limit") int limit);
+
+  @GET(Address.kwLyric)
+  Future<KwLyric> getLyric(@Path("musicId") String musicId);
+
+  @GET(Address.kwAudio)
+  Future<Audio> getKwAudio(
+      @Path("musicId") String musicId, @Path("type") String type);
 }

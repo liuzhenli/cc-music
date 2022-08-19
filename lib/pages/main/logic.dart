@@ -9,6 +9,7 @@ import 'package:music/pages/search/view.dart';
 import 'package:music/pages/settings/view.dart';
 
 import '../../app/init_config.dart';
+import '../save/view.dart';
 import 'state.dart';
 
 class MainLogic extends GetxController with GetSingleTickerProviderStateMixin {
@@ -22,11 +23,12 @@ class MainLogic extends GetxController with GetSingleTickerProviderStateMixin {
     ///初始化应用信息
     InitConfig.initApp(Get.context);
     state.isInit = true;
-    tabController = TabController(vsync: this, initialIndex: 1, length: 4);
+    tabController = TabController(vsync: this, initialIndex: 0, length: 5);
     state.pageList = [
       KeepAlivePage(SearchPage()),
       KeepAlivePage(MusicsPage()),
       KeepAlivePage(RankPage()),
+      KeepAlivePage(SavePage()),
       KeepAlivePage(SettingsPage()),
     ];
     update();

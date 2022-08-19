@@ -10,7 +10,7 @@ class MainState {
   late List<Widget> pageList;
   MainState() {
     //初始化index
-    tabIndex = 1;
+    tabIndex = 0;
     //PageView页面
     pageList = [
 

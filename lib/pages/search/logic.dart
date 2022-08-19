@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:music/model/music_info.dart';
 import 'package:music/utils/api/kw_search_entity.dart';
@@ -12,6 +13,11 @@ import 'state.dart';
 
 class SearchLogic extends GetxController {
   final SearchState state = SearchState();
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   Future<void> tempSearch(String key) async {
     Map<String, dynamic> body = {};
@@ -32,6 +38,7 @@ class SearchLogic extends GetxController {
   }
 
   Future<void> searchMusic(String key, int page, int limit) async {
+    state.searchKey = key;
     var result =
         await HttpManager.getInstance().client.searchMusic(key, page, limit);
     for (KwMusicInfo music in result.abslist) {
@@ -84,11 +91,33 @@ class SearchLogic extends GetxController {
             break;
         }
       });
-      musicInfo.types=types;
+      musicInfo.types = types;
       //musicInfo._types=_types;
       state.kwMusic.add(musicInfo);
     }
     state.showResultView = true;
     update();
+    state.refreshController.finishRefresh();
+    state.refreshController.resetFooter();
+  }
+
+  onRefresh() async {
+    if (state.searchKey.isEmpty) {
+      return;
+    }
+    state.page = 1;
+    searchMusic(state.searchKey, state.page, state.count);
+  }
+
+  onLoadMore() async {
+    if (state.searchKey.isEmpty) {
+      return;
+    }
+    state.page += 1;
+    searchMusic(state.searchKey, state.page, state.count);
+  }
+
+  Future<void> getLyric(musicId) async {
+    var lyric = await HttpManager.getInstance().client.getLyric(musicId);
   }
 }

@@ -1,9 +1,9 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../base/colors.dart';
-import '../../iconfonts/iconfonts.dart';
 import 'logic.dart';
 
 class MainPage extends StatelessWidget {
@@ -38,11 +38,16 @@ class MainPage extends StatelessWidget {
   CupertinoTabBar buildCupertinoTabBar() {
     return CupertinoTabBar(
         items: [
-          buildBottomNavigationBarItem("搜索", IconName.search, IconName.search),
-          buildBottomNavigationBarItem("搜索", IconName.search, IconName.search),
-          buildBottomNavigationBarItem("搜索", IconName.like, IconName.like),
           buildBottomNavigationBarItem(
-              "设置", IconName.setting, IconName.setting),
+              FluentIcons.search_48_regular, FluentIcons.search_48_filled),
+          buildBottomNavigationBarItem(FluentIcons.music_note_2_24_regular,
+              FluentIcons.music_note_2_24_filled),
+          buildBottomNavigationBarItem(
+              FluentIcons.poll_24_regular, FluentIcons.poll_24_filled),
+          buildBottomNavigationBarItem(
+              FluentIcons.heart_48_regular, FluentIcons.heart_48_filled),
+          buildBottomNavigationBarItem(
+              FluentIcons.settings_48_regular, FluentIcons.settings_48_filled),
         ],
         backgroundColor: Colors.white,
         currentIndex: state.tabIndex,
@@ -53,20 +58,10 @@ class MainPage extends StatelessWidget {
         });
   }
 
-  BottomNavigationBarItem buildBottomNavigationBarItem(
-      label, IconName activeIcon, IconName icon) {
+  BottomNavigationBarItem buildBottomNavigationBarItem(regular, filled) {
     return BottomNavigationBarItem(
-      label: label,
-      activeIcon: IconFonts(
-        activeIcon,
-        color: "#ff5000",
-        colors: [],
-      ),
-      icon: IconFonts(
-        icon,
-        color: "#ff5000",
-        colors: [],
-      ),
+      activeIcon: Icon(filled),
+      icon: Icon(regular),
     );
   }
 }

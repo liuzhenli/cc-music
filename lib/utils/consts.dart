@@ -5,5 +5,8 @@ class Constants {
   ///隐私政策
   static const String urlPrivacyAgreement = "";
 
-  static const List<String> path = ["http://search.kuwo.cn/r.s"];
+  static const List<String> path = [
+    "http://search.kuwo.cn/r.s",
+    "http://m.kuwo.cn/newh5/singles/songinfoandlrc"
+  ];
 }

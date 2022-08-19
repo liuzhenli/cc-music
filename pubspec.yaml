@@ -47,6 +47,9 @@ dependencies:
   url_launcher: ^6.1.0
   flutter_bloc: ^8.0.1 # 状态管理
   responsive_builder: ^0.4.2
+  fluentui_system_icons: ^1.1.177
+  easy_refresh: ^3.0.4+2
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:

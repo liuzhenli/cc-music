@@ -13,19 +13,32 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: UIAppBar.buildAppBar(""),
-      body: Container(
-        child: GestureDetector(
-          child: Text("设置代理"),
-          onTap: () => {
-            showProxyDialog("设置代理", context, (text) {
-              GetStorage box = GetStorage();
-              box.write(SpConstants.PROXY, text);
-            })
-          },
+    return ListView(
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 2,
+              height: 20,
+              decoration: BoxDecoration(
+                color: Get.theme.primaryColor,
+              ),
+            ),
+            Text('基本设置')
+          ],
         ),
-      ),
+        Container(
+          child: GestureDetector(
+            child: Text("设置代理"),
+            onTap: () => {
+              showProxyDialog("设置代理", context, (text) {
+                GetStorage box = GetStorage();
+                box.write(SpConstants.PROXY, text);
+              })
+            },
+          ),
+        ),
+      ],
     );
   }
 
